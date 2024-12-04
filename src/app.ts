@@ -13,8 +13,8 @@ import { lambdaHandler as helloHandler } from './controllers/hello'
 
 const table = {
   dev: {
-    POST_TABLE_NAME: 'postTabledbStack6EBE53B4-WE8E1QLIZJ0A',
-    USER_TABLE_NAME: 'userTabledbStackBEB9C621-1TXCUE7AUMASI',
+    POST_TABLE_NAME: 'postTabledbStack6EBE53B4-LJV8GEAU4ACA',
+    USER_TABLE_NAME: 'uuserTabledbStackBEB9C621-19I5SZYX4B7CH',
   },
   prod: {
     POST_TABLE_NAME: '',

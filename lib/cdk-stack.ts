@@ -22,12 +22,12 @@ export class CdkStack extends cdk.Stack {
 
     // Setup : Lambda functions
     const hello = new LambdaStack(this, db, helloHandler, 'hello')
-    const post = new LambdaStack(this, db, postHandler, 'post')
-    const graphqlNonAuth = new LambdaStack(this, db, graphqlNonAuthHandler, 'graphqlNonAuth')
+    // const post = new LambdaStack(this, db, postHandler, 'post')
+    // const graphqlNonAuth = new LambdaStack(this, db, graphqlNonAuthHandler, 'graphqlNonAuth')
 
     // Setup : Lambda functions + ApiGateway (Path)
     api.addIntegration(hello, '/hello')
-    api.addIntegration(post, '/post')
-    api.addIntegration(graphqlNonAuth, '/graphqlNonAuth')
+    // api.addIntegration(post, '/post')
+    // api.addIntegration(graphqlNonAuth, '/graphqlNonAuth')
   }
 }

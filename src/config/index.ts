@@ -1,6 +1,6 @@
 import { TStage } from '../utils/type'
 
-export const APP_NAME = 'template-aws-cdk-be-stack'
+export const APP_NAME = 'bowie-test-cdk-be-stack'
 
 export const STAGE: TStage = 'dev'
 

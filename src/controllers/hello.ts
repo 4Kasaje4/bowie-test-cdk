@@ -12,25 +12,30 @@ import { dynamodbUpdate, dynamoDBUpdateFromAttributes } from '../utils/dyanamoDb
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log('---------- START | helloHandler ----------')
 
+  
+  const body = event.body ? JSON.parse(event.body) : null
   const env = envTable(process.env)
   if (typeof env === 'string') return responseFormatHttp(EResponseStatus.ERROR, { error: env })
 
   try {
     const dateNow = new Date().toISOString()
 
-    const params: DocumentClient.UpdateItemInput = {
-      TableName: env.USER_TABLE_NAME as string,
-      Key: {
-        companyID: 'DAB_01',
-        userID: 'USR_01',
-      },
-      ...dynamoDBUpdateFromAttributes({ createdAt: dateNow }, ['companyID', 'userID']),
-    }
+    // const params: DocumentClient.UpdateItemInput = {
+    //   TableName: env.USER_TABLE_NAME as string,
+    //   Key: {
+    //     companyID: 'DAB_01',
+    //     userID: 'USR_01',
+    //   },
+    //   ...dynamoDBUpdateFromAttributes({ createdAt: dateNow }, ['companyID', 'userID']),
+    // }
 
-    await dynamodbUpdate(db, params)
+    // await dynamodbUpdate(db, params)
+    
 
     console.log('----------  END  | helloHandler | Success ----------')
-    return responseFormatHttp(EResponseStatus.SUCCESS, { msg: '👍 Success update userTable ⭐⭐⭐' })
+    return responseFormatHttp(EResponseStatus.SUCCESS, {
+      msg: body ? '👍 Success update userTable ⭐⭐⭐ ' + body.msg : '👍 Success update userTable ⭐⭐⭐',
+    })
   } catch (error) {
     console.log('----------  END  | helloHandler | Error ----------', error)
     return responseFormatHttp(EResponseStatus.ERROR, { error: error })

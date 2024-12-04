@@ -6,19 +6,19 @@ import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs'
 import { LambdaIntegration, LogGroupLogDestination, MethodOptions, RestApi } from 'aws-cdk-lib/aws-apigateway'
 
 // Include
-import { STAGE } from '../src/config/index'
+import { APP_NAME, STAGE } from '../src/config/index'
 
 //
 export class ApigatewayStack extends RestApi {
   constructor(scope: Construct) {
     super(scope, 'ApiGateway', {
-      restApiName: 'template-aws-cdk-be-apigateway',
+      restApiName: 'bowie-test-cdk-be-apigateway',
       cloudWatchRole: true,
       deployOptions: {
         stageName: STAGE,
         accessLogDestination: new LogGroupLogDestination(
           new LogGroup(scope, 'ApiLogGroup', {
-            logGroupName: 'api_gateway',
+            logGroupName: APP_NAME + '-api_gateway',
             retention: RetentionDays.ONE_DAY,
             removalPolicy: RemovalPolicy.DESTROY,
           }),
