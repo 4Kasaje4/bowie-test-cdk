@@ -6,7 +6,7 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Prepare
 
-Copy the .awscredentials-example to .awscredentials and put your access and secret key
+Copy the `.awscredentials-example` to `.awscredentials` and put your access and secret key
 
 ## Useful commands
 
